@@ -6,25 +6,33 @@ import sys
 def isNan (_str):
     return _str if _str else ["NaN"]
 
+
+def getRollNumber(text: str, path):
+    roll = re.sub(r'\W+ ', '', isNan(re.findall("Roll number  (.+?)(?= Date)", text))[0])
+    if roll == 'NaN': roll = re.sub(r'\W+ ', '', isNan(re.findall("Roll number: (.+?)(?= Date)", text))[0])
+    if roll == 'NaN': roll = re.sub(r'\W+ ', '', isNan(re.findall("Roll number: (.+?)\n", text))[0])
+    if roll == 'NaN': roll = re.sub(r'\W+ ', '', isNan(re.findall("Uimhir rolla:  (.+?)\n", text))[0])
+    return roll
+
+
 def getInspactionDate(text: str):
     date = re.sub(r'\W+ ', '', isNan(re.findall("Date of (?:Evaluation:|inspection:) (.+?)(?= )", text, flags=re.IGNORECASE))[0])
     if date == 'NaN': date = re.sub(r'\W+ ', '', isNan(re.findall("Date of inspection:(.+?)", text, flags=re.IGNORECASE))[0])
     if date == 'NaN': date = re.sub(r'\W+ ', '', isNan(re.findall("Date of Inspection (.+?)", text, flags=re.IGNORECASE))[0])
     return date
-    # Date of inspection:14 March 2013
-    # if date == 'NaN':
-    #     print(path)
-    #     exit()
+
 
 def getPupilsQuality(text: str):
     four = re.sub(r'\W+  ', '', isNan(re.findall("(?:THE QUALITY OF PUPILS’|the quality of pupils’ ).+?(?=[0-9])", text, flags=re.IGNORECASE))[0])
     if four == 'NaN': four = re.sub(r'\W+  ', '', isNan(re.findall("The learning achievements of pupils.+?\d", text, flags=re.IGNORECASE|re.DOTALL))[0])
     return four
 
+
 def getTeachingQuality(text: str):
     five = re.sub(r'\W+  ', '', isNan(re.findall("(?:THE QUALITY OF TEACHING|the quality of teaching ).+?(?=[0-9])", text, re.IGNORECASE))[0])
     if five == 'NaN': five = re.sub(r'\W+  ', '', isNan(re.findall("(QUALITY OF LEARNING AND TEACHING.+?)IMPLEMENTATION OF RECOMMENDATION", text, flags=re.IGNORECASE|re.DOTALL))[0])
     return five
+
 
 def getLeadershipQuality(text: str):
     seven = re.sub(r'\W+  ', '', isNan(re.findall("(?:THE QUALITY OF LEADERSHIP|the quality of LEADERSHIP ).+?(?=[0-9])", text, re.IGNORECASE))[0])
@@ -42,8 +50,7 @@ def getInfo (path):
 
     line.append(re.sub(r'\W+ ', '', isNan(re.findall("School name .+?(?= School| Seoladh)", data))[0]))
     line.append(re.sub(r'\W+ ', '', isNan(re.findall("School address .+?(?= Uimhir| Roll)", data))[0]))
-    line.append(re.sub(r'\W+ ', '', isNan(re.findall("Roll number .+?(?= Date)", data))[0]))
-    # line.append(re.sub(r'\W+ ', '', isNan(re.findall("Date of (?:Evaluation:|inspection:) (.+?)(?= )", data, flags=re.IGNORECASE))[0]))
+    line.append(getRollNumber(data, path))
     line.append(getInspactionDate(data))
     line.append(getPupilsQuality(data))
     line.append(getTeachingQuality(data))
@@ -59,6 +66,6 @@ if __name__ == '__main__':
         res.append(getInfo("../Reports/plain_text/" + f))
     missing = 0
     for r in res:
-        if r[3] == 'NaN':
+        if r[2] == 'NaN':
             missing += 1
     print("Success rate:", 100 - missing / len(res) * 100)
