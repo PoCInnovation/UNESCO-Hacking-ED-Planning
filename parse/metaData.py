@@ -34,7 +34,6 @@ def getInfo (path):
     line.append(re.sub(r'\W+ ', '', isNan(re.findall("School address .+?(?= Uimhir| Roll)", data))[0]))
     line.append(re.sub(r'\W+ ', '', isNan(re.findall("Roll number .+?(?= Date)", data))[0]))
     line.append(re.sub(r'\W+ ', '', isNan(re.findall("Date of (?:Evaluation:|inspection:) .+?(?= )", data))[0]))
-    # line.append(re.sub(r'\W+ ', '', isNan(re.findall("(?:THE QUALITY OF PUPILS’|the quality of pupils’ ).+?(?=[0-9])", data))[0]))
     line.append(getPupilsQuality(data, path))
     line.append(getTeachingQuality(data))
     line.append(re.sub(r'\W+ ', '', isNan(re.findall("(?:THE QUALITY OF SUPPORT|the quality of support ).+?(?=[0-9])", data))[0]))
