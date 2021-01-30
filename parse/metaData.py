@@ -6,6 +6,16 @@ import sys
 def isNan (_str):
     return _str if _str else ["NaN"]
 
+def getTeachingQuality(text: str):
+    five = re.sub(r'\W+  ', '', isNan(re.findall("(?:THE QUALITY OF TEACHING|the quality of teaching ).+?(?=[0-9])", data, re.IGNORECASE))[0])
+    if five == 'NaN': five = re.sub(r'\W+  ', '', isNan(re.findall("(QUALITY OF LEARNING AND TEACHING.+?)IMPLEMENTATION OF RECOMMENDATION", data, flags=re.IGNORECASE|re.DOTALL))[0])
+    return five
+
+def getLeadershipQuality(text: str):
+    seven = re.sub(r'\W+ ', '', isNan(re.findall("(?:THE QUALITY OF LEADERSHIP|the quality of LEADERSHIP ).+?(?=[0-9])", data, re.IGNORECASE))[0])
+    if seven == 'NaN': seven = re.sub(r'\W+ ', '', isNan(re.findall("(QUALITY OF SCHOOL MANAGEMENT AND LEADERSHIP.+?)QUALITY OF LEARNING AND TEACHING", data, flags=re.IGNORECASE|re.DOTALL))[0])
+    return seven
+
 def getInfo (path):
     f = open(path)
     data = f.read()
@@ -19,21 +29,9 @@ def getInfo (path):
     line.append(re.sub(r'\W+ ', '', isNan(re.findall("Roll number .+?(?= Date)", data))[0]))
     line.append(re.sub(r'\W+ ', '', isNan(re.findall("Date of (?:Evaluation:|inspection:) .+?(?= )", data))[0]))
     line.append(re.sub(r'\W+ ', '', isNan(re.findall("(?:THE QUALITY OF PUPILS’|the quality of pupils’ ).+?(?=[0-9])", data))[0]))
-
-    # Quality of teaching
-    five = re.sub(r'\W+  ', '', isNan(re.findall("(?:THE QUALITY OF TEACHING|the quality of teaching ).+?(?=[0-9])", data, re.IGNORECASE))[0])
-    if five == 'NaN': five = re.sub(r'\W+  ', '', isNan(re.findall("(QUALITY OF LEARNING AND TEACHING.+?)IMPLEMENTATION OF RECOMMENDATION", data, flags=re.IGNORECASE|re.DOTALL))[0])
-    line.append(five)
-
-    # Quality of support
+    line.append(getTeachingQuality(data))
     line.append(re.sub(r'\W+ ', '', isNan(re.findall("(?:THE QUALITY OF SUPPORT|the quality of support ).+?(?=[0-9])", data))[0]))
-
-    # Quality of Leardership
-    seven = re.sub(r'\W+ ', '', isNan(re.findall("(?:THE QUALITY OF LEADERSHIP|the quality of LEADERSHIP ).+?(?=[0-9])", data, re.IGNORECASE))[0])
-    if seven == 'NaN': seven = re.sub(r'\W+ ', '', isNan(re.findall("(QUALITY OF SCHOOL MANAGEMENT AND LEADERSHIP.+?)QUALITY OF LEARNING AND TEACHING", data, flags=re.IGNORECASE|re.DOTALL))[0])
-    line.append(seven)
-
-    # Quality of School
+    line.append(getLeadershipQuality(data))
     line.append(re.sub(r'\W+ ', '', isNan(re.findall("(?:THE QUALITY OF SCHOOL|the quality of school ).+?(?=[0-9])", data))[0]))
     return (line)
 
