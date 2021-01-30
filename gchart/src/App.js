@@ -28,6 +28,16 @@ regions.forEach((region) => {
 
 console.log(regions);
 
+const formatted_values = [['City', 'Note']];
+
+regions.forEach((region) => {
+  const {name, notes} = region;
+  const newElem = [name, notes.toString()];
+  formatted_values.push(newElem);
+});
+
+console.log(formatted_values)
+
 // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
 function App() {
   return (
