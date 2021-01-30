@@ -4,10 +4,30 @@ import dotenv from "dotenv";
 import data from "./out.json";
 
 dotenv.config();
-const regions = [];
+
+const regions = []
+
 Object.keys(data).forEach((key) => {
-  console.log(data[key]);
-})
+  const { County, note } = data[key];
+  const region = regions.find((e) => e.name === County)
+  if (!region) {
+    regions.push({
+      name: County,
+      notes: [note]
+    });
+  } else {
+    region.notes.push(note);
+  }
+});
+
+regions.forEach((region) => {
+  const divider = region.notes.length
+  region.notes = region.notes.reduce((acc, value) => acc + Number(value), 0)
+  region.notes = region.notes / divider;
+});
+
+console.log(regions);
+
 // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
 function App() {
   return (
