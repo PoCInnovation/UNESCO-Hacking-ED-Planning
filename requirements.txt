@@ -1,0 +1,7 @@
+pdfminer>=20191125
+pdfminer.six>=20201018
+lxml>=4.6.2
+wget>=3.2
+bs4>=0.0.1
+requests>=2.25.1
+pandas>=1.2.1
