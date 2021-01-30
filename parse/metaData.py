@@ -12,6 +12,8 @@ def getInfo (path):
     line = []
 
     data = re.sub("The Inspectorate’s Quality Continuum.+?(?= difficulties)", '', data)
+    data = re.sub("THE INSPECTORATE’S QUALITY CONTINUUM.+?(?= difficulties)", '', data)
+
     line.append(re.sub(r'\W+ ', '', isNan(re.findall("School name .+?(?= School| Seoladh)", data))[0]))
     line.append(re.sub(r'\W+ ', '', isNan(re.findall("School address .+?(?= Uimhir| Roll)", data))[0]))
     line.append(re.sub(r'\W+ ', '', isNan(re.findall("Roll number .+?(?= Date)", data))[0]))
