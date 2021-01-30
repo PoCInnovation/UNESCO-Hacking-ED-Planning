@@ -6,10 +6,7 @@ REPO = "Reports/plain_text"
 parsed = []
 
 def isNan (_str):
-    if not _str:
-        return ["Nan"]
-    else:
-        return _str
+    return _str if _str else ["NaN"]
 
 for session_file in os.listdir(REPO):
     filepath = os.path.join(REPO, session_file)
