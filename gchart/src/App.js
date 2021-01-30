@@ -4,9 +4,7 @@ import dotenv from "dotenv";
 import data from "./out.json";
 
 dotenv.config();
-
-const regions = []
-
+const regions = [];
 Object.keys(data).forEach((key) => {
   const { County, note } = data[key];
   const region = regions.find((e) => e.name === County)
@@ -32,39 +30,30 @@ const formatted_values = [['City', 'Note']];
 
 regions.forEach((region) => {
   const {name, notes} = region;
-  const newElem = [name, notes.toString()];
+  const newElem = [name, notes];
   formatted_values.push(newElem);
 });
 
 console.log(formatted_values)
-
-// See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
 function App() {
   return (
-    /*
     <Chart
       width={'1000px'}
       height={'700px'}
       chartType="GeoChart"
-      data={[
-        ['City', 'School Name', 'Note'],
-        ['Carlow', 'BALLYCONNELL N S', 4],
-        ['Carlow', 'BORRIS MXD N S', 9],
-        ['Clare', 'S N MHUIRE MILIUC', 3],
-      ]}
+      data={formatted_values}
       options={{
         region: 'IE',
-        displayMode: 'markers',
         resolution: 'provinces',
-        colorAxis: { colors: ['green', 'blue'] },
+        colorAxis: {
+          colors: ['#512E5F', '#EBDEF0']},
+          backgroundColor: '#81d4fa',
+          datalessRegionColor: '#ffffff',
+          defaultColor: '#85929E',
       }}
       mapsApiKey={process.env.REACT_APP_GCP_API_KEY}
       rootProps={{ 'data-testid': '2' }}
     />
-    */
-   <div>
-     PtitLuca
-   </div>
   );
 }
 
