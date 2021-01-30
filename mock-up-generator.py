@@ -1,5 +1,6 @@
 import sys
-import csv, json
+import csv
+import json
 import random
 
 from typing import List
