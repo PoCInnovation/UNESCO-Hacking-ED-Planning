@@ -7,8 +7,8 @@ def isNan (_str):
     return _str if _str else ["NaN"]
 
 def getPupilsQuality(text: str, path):
-    four = re.sub(r'\W+ ', '', isNan(re.findall("(?:THE QUALITY OF PUPILS’|the quality of pupils’ ).+?(?=[0-9])", text, flags=re.IGNORECASE))[0])
-    if four == 'NaN': four = re.sub(r'\W+ ', '', isNan(re.findall("The learning achievements of pupils.+?\d", text, flags=re.IGNORECASE|re.DOTALL))[0])
+    four = re.sub(r'\W+  ', '', isNan(re.findall("(?:THE QUALITY OF PUPILS’|the quality of pupils’ ).+?(?=[0-9])", text, flags=re.IGNORECASE))[0])
+    if four == 'NaN': four = re.sub(r'\W+  ', '', isNan(re.findall("The learning achievements of pupils.+?\d", text, flags=re.IGNORECASE|re.DOTALL))[0])
     return four
 
 def getTeachingQuality(text: str):
@@ -18,7 +18,7 @@ def getTeachingQuality(text: str):
 
 def getLeadershipQuality(text: str):
     seven = re.sub(r'\W+  ', '', isNan(re.findall("(?:THE QUALITY OF LEADERSHIP|the quality of LEADERSHIP ).+?(?=[0-9])", text, re.IGNORECASE))[0])
-    if seven == 'NaN': seven = re.sub(r'\W+ ', '', isNan(re.findall("(QUALITY OF SCHOOL MANAGEMENT AND LEADERSHIP.+?)QUALITY OF LEARNING AND TEACHING", text, flags=re.IGNORECASE|re.DOTALL))[0])
+    if seven == 'NaN': seven = re.sub(r'\W+  ', '', isNan(re.findall("(QUALITY OF SCHOOL MANAGEMENT AND LEADERSHIP.+?)QUALITY OF LEARNING AND TEACHING", text, flags=re.IGNORECASE|re.DOTALL))[0])
     return seven
 
 
