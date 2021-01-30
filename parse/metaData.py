@@ -3,9 +3,6 @@ import os
 import re
 import sys
 
-REPO = "Reports/plain_text"
-parsed = []
-
 def isNan (_str):
     return _str if _str else ["NaN"]
 
@@ -14,6 +11,7 @@ def getInfo (path):
     data = f.read()
     line = []
 
+    data = re.sub("The Inspectorate’s Quality Continuum.+?(?= difficulties)", '', data)
     line.append(re.sub(r'\W+ ', '', isNan(re.findall("School name .+?(?= School| Seoladh)", data))[0]))
     line.append(re.sub(r'\W+ ', '', isNan(re.findall("School address .+?(?= Uimhir| Roll)", data))[0]))
     line.append(re.sub(r'\W+ ', '', isNan(re.findall("Roll number .+?(?= Date)", data))[0]))
@@ -25,6 +23,6 @@ def getInfo (path):
     line.append(re.sub(r'\W+ ', '', isNan(re.findall("(?:THE QUALITY OF SCHOOL|the quality of school ).+?(?=[0-9])", data))[0]))
     return (line)
 
+
 if __name__ == '__main__':
-    path = sys.argv[1]
-    print (getInfo(path))
+    print (getInfo("../Reports/plain_text/13299E_13_01_2021.txt")[4])
