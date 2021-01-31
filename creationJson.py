@@ -2,23 +2,23 @@ import json
 
 ROLL_NUMBER = 0
 NOTE = 1
-HYGIEN = 2
-FOUR = 3
-FIVE = 4
-SIX = 5
-SEVEN = 6
+PUPILS = 2
+TEACHING = 3
+SUPPORT = 4
+LEADERSHIP = 5
+SCHOOL = 6
 
 def fill_data_field(info, d):
-    if info[HYGIEN]:
-        d["data"]["hygien"] = info[HYGIEN]
-    if info[FOUR]:
-        d["data"]["four"] = info[FOUR]
-    if info[FIVE]:
-        d["data"]["five"] = info[FIVE]
-    if info[SIX]:
-        d["data"]["six"] = info[SIX]
-    if info[SEVEN]:
-        d["data"]["seven"] = info[SEVEN]
+    if info[PUPILS]:
+        d["data"]["pupils"] = info[PUPILS]
+    if info[TEACHING]:
+        d["data"]["teaching"] = info[TEACHING]
+    if info[SUPPORT]:
+        d["data"]["support"] = info[SUPPORT]
+    if info[LEADERSHIP]:
+        d["data"]["leadership"] = info[LEADERSHIP]
+    if info[SCHOOL]:
+        d["data"]["school"] = info[SCHOOL]
     return (d)
 
 def remove_last_coma(f):
