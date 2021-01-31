@@ -90,7 +90,7 @@ Once our Transformers in hand, you just add to process our analysis (Question An
 
 Fetching data is great, but analysing raw data in text format is not very pleasant, this is why we created a map format to vizualise informations
 
-![](https://giphy.com/gifs/A6MzU6OFLGV1lss2ow)
+<img src=".img/front-end-picture.png" width=500/>
 
 > :bulb: Check this [part](https://github.com/PoCInnovation/UNESCO-Hacking-ED-Planning/blob/master/README.md#how-to-use-it-) if you want to launch the web App by yourself.
 
