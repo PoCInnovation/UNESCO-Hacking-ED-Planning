@@ -40,10 +40,10 @@ Once our Transformers in hand, you just add to process our analysis (Question An
 
 ## Authors
 
- - [Valentin De Matos](https://github.com/Thytu)
+ - [Valentin De Matos](https://www.linkedin.com/in/valentin-de-matos/)
  - [Tom Chauveau](https://github.com/TomChv)
- - [Roman Gascoin](https://github.com/Rgascoin)
- - [Killian Clette](https://github.com/Skerilyo)
+ - [Roman Gascoin](https://www.linkedin.com/in/rgascoin/)
+ - [Killian Clette](https://www.linkedin.com/in/killian-clette-06014b182/)
  - [Luca Georges francois](https://github.com/TomChv)
  - [Paul Cochet](https://github.com/Paul-Cochet)
  - [Coline Seguret](https://fr.linkedin.com/in/coline-seguret)
