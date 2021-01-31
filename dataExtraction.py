@@ -66,10 +66,10 @@ def DownloadPDF(numberOfPages: int, exportPath="./") -> [str]:
 
 if __name__ == "__main__":
     DOWNLOAD_PDF = False # If you want/need to download pdf, change this var to True
-    NUMBER_OF_PAGES = 5
+    NUMBER_OF_PAGES = 200
     PATH_TO_ALL_REPORTS = "./Reports"
     PATH_TO_PDF_REPORTS = PATH_TO_ALL_REPORTS + "/pdf/"
-    PATH_TO_TEXT_REPORTS = PATH_TO_ALL_REPORTS + "/plain_text/"
+    PATH_TO_TEXT_REPORTS = PATH_TO_ALL_REPORTS + "/plain_text"
 
     General_InspectionReports = pd.DataFrame(columns=['Date','School Roll No.','County','School Name','School Level','Inspection Type','Subject','URL'])
 
@@ -120,6 +120,7 @@ if __name__ == "__main__":
 
     else:
         PDFToConvert = os.listdir(PATH_TO_PDF_REPORTS)
+        print(PDFToConvert[0:10])
 
     if os.path.exists(PATH_TO_TEXT_REPORTS) == False:
         os.mkdir(PATH_TO_TEXT_REPORTS)
@@ -130,13 +131,13 @@ if __name__ == "__main__":
     NUMBER_OF_PDF = len(PDFToConvert)
 
     for index, PDF in enumerate(PDFToConvert):
-        print(f"{index / NUMBER_OF_PDF * 100:.1f}%\t-\t{len(FilesNotConverted)}\t-\t{NUMBER_OF_PDF}")
+        print(f"{index / NUMBER_OF_PDF * 100:.1f}%\t-\t{len(FilesNotConverted)}\t-\t{index}\t-\t{NUMBER_OF_PDF}")
         try:
             extracted_report = PDFToText(f"{PATH_TO_PDF_REPORTS + PDF}")
             if "ú" in extracted_report :
                 FilesNotConverted.append(PDF[len('Reports/pdf/'):])
                 continue
-            with open(f"{PATH_TO_TEXT_REPORTS}/{PDF[len('Reports/pdf/'):]}.txt" ,"w+") as f:
+            with open(f"{PATH_TO_TEXT_REPORTS}/{PDF[:-4]}.txt" ,"w+") as f:
                 f.write(extracted_report)
         except (Exception) as e:
             ConvertionCategories["Cannot be processed"] = ConvertionCategories["Cannot be processed"] + 1
