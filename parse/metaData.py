@@ -29,6 +29,7 @@ def getRollNumber(text: str):
     if roll == 'NaN': roll = re.sub(r'\W+ ', '', isNan(re.findall("Roll number: (.+?)(?= Date)", text))[0])
     if roll == 'NaN': roll = re.sub(r'\W+ ', '', isNan(re.findall("Roll number: (.+?)\n", text))[0])
     if roll == 'NaN': roll = re.sub(r'\W+ ', '', isNan(re.findall("Uimhir rolla:  (.+?)\n", text))[0])
+    if len(roll) > len("71330V") : roll = roll[:len("71330V")]
     return roll
 
 
@@ -57,10 +58,15 @@ def getLeadershipQuality(text: str):
     return seven
 
 
-def getInfo(path):
-    f = open(path)
-    data = f.read()
+def getInfo(path, from_text=False):
     line = []
+    data = ""
+
+    if from_text == False:
+        f = open(path)
+        data = f.read()
+    else:
+        data = path
 
     data = re.sub("The Inspectorate’s Quality Continuum.+?(?= difficulties)", '', data)
     data = re.sub("THE INSPECTORATE’S QUALITY CONTINUUM.+?(?= difficulties)", '', data)
