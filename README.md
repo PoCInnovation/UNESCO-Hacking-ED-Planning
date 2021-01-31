@@ -1,7 +1,11 @@
 # Athena
 
 ## What is Athena
-**TODO**
+Athena is a all in one solution to parse and analyse informations includes in reports.
+
+Whith that, Athena will allow nations to oversee the education system more efficiently and it will help them find and resolve any underlying issues.
+
+With additional time, we could build a complete product, with a friendly interface and an API for others to make better use of our data. This hackathon was a great project and we hope to continue building on it.
 
 ## What does Athena can do ?
 Athena can:
@@ -79,6 +83,7 @@ Once our Transformers in hand, you just add to process our analysis (Question An
 
 # Our recommendations:
 A great and simple way to improve possible futur datascientiste job on this subject, is to impose a standard format for the reprots.
+You can find our recommendations on `Deliverable_3_List_of_recommendation_ATHENA.pdf`
 
 # What Next:
 Ofcourses, we already have many ideas to improve our solution such as:
