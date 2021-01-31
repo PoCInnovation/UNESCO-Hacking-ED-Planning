@@ -92,7 +92,10 @@ Fetching data is great, but analysing raw data in text format is not very pleasa
 
 <img src=".img/front-end-picture.png" width=500/>
 
+> :bulb: Check this [part](https://github.com/PoCInnovation/UNESCO-Hacking-ED-Planning/blob/master/README.md#how-to-use-it-) if you want to launch the web App by yourself.
+
 # Our recommendations:
+
 A great and simple way to improve possible futur datascientiste job on this subject, is to impose a standard format for the reprots.
 You can find our recommendations on `Deliverable_3_List_of_recommendation_ATHENA.pdf`
 
