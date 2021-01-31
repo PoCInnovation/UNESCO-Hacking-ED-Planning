@@ -120,9 +120,6 @@ Ofcourses, we already have many ideas to improve our solution such as:
 **sentiment analys** (note that is in real condition in the projet data are fetched from reports)\
 <img src=".img/sentiment_analys.png" width=500>
 
-**Result in map**
-![Alt Text](.img/giph.gif)
-
 ## Authors
 
  - [Valentin De Matos](https://www.linkedin.com/in/valentin-de-matos/)
