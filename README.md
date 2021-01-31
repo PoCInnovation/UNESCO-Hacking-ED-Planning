@@ -33,8 +33,10 @@ Finally the data in hand we could set and use our Transformer model, we decided 
 (Regarding to the subject, it's important to build a solution usable by most contry including with low IT ressources countrys.)\
 Once our Transformers in hand, you just add to process our analysis (Question Answering & Sentence Classification)
 
-
 ## Data visualisation:
+
+# Our recommendations:
+**TODO**
 
 ## Authors
 
