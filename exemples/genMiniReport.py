@@ -44,12 +44,12 @@ def getMiniReport(infos):
     result.append(infos[1])
     result.append(infos[2])
     result.append(infos[3])
-    result.append(nlp_sum(infos[4]))
-    result.append(nlp_sum(infos[5]))
-    # result.append(nlp_qa(context=to_summ[5], question='What is the quality of teaching')['answer'])
-    # result.append(nlp_qa(context=to_summ[6], question='What is the quality of support')['answer'])
-    # result.append(nlp_qa(context=to_summ[7], question='What is the quality of leadership')['answer'])
-    # result.append(nlp_qa(context=to_summ[8], question='What is the quality of school')['answer'])
+
+    result.append(nlp_sum(infos[4]) if infos[4] != "NaN" else "NaN")
+    result.append(nlp_sum(infos[5]) if infos[5] != "NaN" else "NaN")
+    result.append(nlp_sum(infos[6]) if infos[6] != "NaN" else "NaN")
+    result.append(nlp_sum(infos[7]) if infos[7] != "NaN" else "NaN")
+    result.append(nlp_sum(infos[8]) if infos[8] != "NaN" else "NaN")
 
     pdf = PDF(orientation='P', unit='mm', format='A4')
     pdf.add_page()
@@ -58,21 +58,45 @@ def getMiniReport(infos):
     pdf.addText(10, 30, 0, 6, "School Name:\n" + result[0], 'C')
     pdf.addText(10, 45, 0, 6, "School Adress:\n" + result[1], 'C')
     pdf.addText(10, 60, 0, 6, "School Roll:\n" + result[2], 'C')
-    pdf.addText(10, 70, 0, 6, "Evaluation Date:\n" + result[3], 'C')
+    pdf.addText(10, 75, 0, 6, "Evaluation Date:\n" + result[3], 'C')
 
-    print(result[4][0]['summary_text'])
+    text = "I - Quality Of Pupils\n"
+    if result[4] == "NaN":
+            text += "Not Enough informations\n\n"
+    else:
+        text += result[4][0]['summary_text'] + "\n\n"
 
-    pdf.addText(0, 90, 0, 10, "I - Quality Of Pupils", 'L')
-    pdf.addText(0, 100, 0, 10, result[4][0]['summary_text'], 'L')
+    text += "II - Quality of teaching\n"
+    if result[5] == "NaN":
+            text += "Not Enough informations\n\n"
+    else:
+        text += result[5][0]['summary_text'] + "\n\n"
 
-    pdf.addText(0, 120, 0, 10, "II - Quality Of Teaching", 'L')
-    pdf.addText(0, 110, 0, 10, result[5][0]['summary_text'], 'L')
+    text += "III - Quality of support\n"
+    if result[6] == "NaN":
+            text += "Not Enough informations\n\n"
+    else:
+        text += result[6][0]['summary_text'] + "\n\n"
 
-    pdf.output('test.pdf','F')
+    text += "VI - Quality of leadership\n"
+    if result[7] == "NaN":
+            text += "Not Enough informations\n\n"
+    else:
+        text += result[7][0]['summary_text'] + "\n\n"
+
+    text += "V - Quality of School\n"
+    if result[8] == "NaN":
+            text += "Not Enough informations\n\n"
+    else:
+        text += result[8][0]['summary_text'] + "\n\n"
+
+    encode = text.encode('latin-1', 'replace').decode('latin-1')
+    pdf.addText(0, 90, 0, 10, encode, 'L')
+
+    pdf.output('miniReport.pdf','F')
     return pdf
 
 if __name__ == "__main__":
     report = dataExtraction.PDFToText("exemple_report.pdf")
     reportInfos = metaData.getInfo(report, from_text=True)
     result = getMiniReport(reportInfos)
-    [print(info) for info in result]
