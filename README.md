@@ -112,7 +112,7 @@ Ofcourses, we already have many ideas to improve our solution such as:
 **QnA** (note that is anwser is made by the model and not in raw data)\
 <img src=".img/QnA.png" width=500>
 
-**QnA** (note that is anwser is made by the model and not in raw data)\
+**sentiment analys** (note that is in real condition in the projet data are fetched from reports)\
 <img src=".img/sentiment_analys.png" width=500>
 
 ## Authors
