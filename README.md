@@ -5,13 +5,25 @@
 
 
 ## How to use it ?
-```py
+1. Need to have ```dependencies``` installed
+```bash
 pip3 install -r requirements.txt
+pip3 install jupyterlab
+pip3 install notebook
 ```
 
 ## How to test our NLP process ?
 You can access to notebook exemple in `exemples/` folder.\
-To run our exemple just type: `jupyter notebooke path_to_file`.
+To run our exemple just type: `jupyter notebook <path_to_file>`.\
+All the files of the jupyter notebook are in the directory ```examples/```.\
+In particular, you can find two jupyter notebook ```multiples_predictions.ipynb``` and ```single_analysis.ipynb```.
+
+For example if you are in root of repo:
+```bash
+jupyter notebook exemples/multiples_predictions.ipynb
+# or
+jupyter notebook exemples/single_analysis.ipynb 
+```
 
 Please note that you need to have installed jupyter to run our notebooks.\
 For more inforlations please refer to: [jupyter.org/install](https://jupyter.org/install)
