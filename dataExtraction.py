@@ -65,7 +65,7 @@ def DownloadPDF(numberOfPages: int, exportPath="./") -> [str]:
 
 
 if __name__ == "__main__":
-    DOWNLOAD_PDF = False # If you whant/need to download pdf, change this var to True
+    DOWNLOAD_PDF = False # If you want/need to download pdf, change this var to True
     NUMBER_OF_PAGES = 5
     PATH_TO_ALL_REPORTS = "./Reports"
     PATH_TO_PDF_REPORTS = PATH_TO_ALL_REPORTS + "/pdf/"
