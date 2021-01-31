@@ -90,6 +90,8 @@ Once our Transformers in hand, you just add to process our analysis (Question An
 
 Fetching data is great, but analysing raw data in text format is not very pleasant, this is why we created a map format to vizualise informations
 
+<img src=".img/front-end-picture.png" width=500/>
+
 # Our recommendations:
 A great and simple way to improve possible futur datascientiste job on this subject, is to impose a standard format for the reprots.
 You can find our recommendations on `Deliverable_3_List_of_recommendation_ATHENA.pdf`
