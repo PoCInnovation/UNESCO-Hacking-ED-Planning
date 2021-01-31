@@ -5,7 +5,7 @@ from metaData import getInfo
 
 nlp_qa = pipeline('question-answering')
 
-def getQnA(path: str):
+def getQnA(path: str, from_text=False):
     """
     Ask basics questions to the model with respect to the given context
 
@@ -16,17 +16,18 @@ def getQnA(path: str):
     array: result for all of the nith questions
     """
     result = []
+    context = ""
 
-    to_summ = getInfo(path)
-    result.append(nlp_qa(context=to_summ[0], question='What is the school name')['answer'])
-    result.append(nlp_qa(context=to_summ[1], question='What is the school address')['answer'])
-    result.append(nlp_qa(context=to_summ[2], question='What is the roll number')['answer'])
-    result.append(nlp_qa(context=to_summ[3], question='What is the date of evaluation')['answer'])
-    result.append(nlp_qa(context=to_summ[4], question='What is the quality of pupils')['answer'])
-    result.append(nlp_qa(context=to_summ[5], question='What is the quality of teaching')['answer'])
-    result.append(nlp_qa(context=to_summ[6], question='What is the quality of support')['answer'])
-    result.append(nlp_qa(context=to_summ[7], question='What is the quality of leadership')['answer'])
-    result.append(nlp_qa(context=to_summ[8], question='What is the quality of school')['answer'])
+    context = getInfo(path) if from_text == False else path
+    result.append({'question': 'What is the school name',           'result': nlp_qa(context=context[0], question='What is the school name')})
+    result.append({'question': 'What is the school address',        'result': nlp_qa(context=context[1], question='What is the school address')})
+    result.append({'question': 'What is the roll number',           'result': {'score': 1, 'answer': context[2]}})
+    result.append({'question': 'What is the date of evaluation',    'result': nlp_qa(context=context[3], question='What is the date of evaluation')})
+    result.append({'question': 'What is the quality of pupils',     'result': nlp_qa(context=context[4], question='What is the quality of pupils')})
+    result.append({'question': 'What is the quality of teaching',   'result': nlp_qa(context=context[5], question='What is the quality of teaching')})
+    result.append({'question': 'What is the quality of support',    'result': nlp_qa(context=context[6], question='What is the quality of support')})
+    result.append({'question': 'What is the quality of leadership', 'result': nlp_qa(context=context[7], question='What is the quality of leadership')})
+    result.append({'question': 'What is the quality of school',     'result': nlp_qa(context=context[8], question='What is the quality of school')})
     return result
 
 if __name__ == "__main__":
