@@ -7,7 +7,24 @@ def isNan (_str):
     return _str if _str else ["NaN"]
 
 
-def getRollNumber(text: str, path):
+def getSchoolName(text: str):
+    name = re.sub(r'\W+ ', '', isNan(re.findall("School name (.+?)(?= School| Seoladh)", text))[0])
+    if name == 'NaN': name = re.sub(r'\W+ ', '', isNan(re.findall("\n(.+?)\n.+?\nRoll", text))[0])
+    if name == 'NaN': name = re.sub(r'\W+ ', '', isNan(re.findall("\n(.+?)\n.+?\nUimhir rolla:", text))[0])
+    if name == 'NaN': name = re.sub(r'\W+ ', '', isNan(re.findall("School address \n\n(.+?) /", text))[0])
+    # School address
+    return name
+
+
+def getSchoolAddress(text: str):
+    addr = re.sub(r'\W+ ', '', isNan(re.findall("School address (.+?)(?= Uimhir| Roll)", text))[0])
+    if addr == 'NaN': addr = re.sub(r'\W+ ', '', isNan(re.findall("Virginia, County Cavan", text))[0])
+    if addr == 'NaN': addr = re.sub(r'\W+ ', '', isNan(re.findall("\n(.+?)\nRoll", text))[0])
+    if addr == 'NaN': addr = re.sub(r'\W+ ', '', isNan(re.findall("\n(.+?)\nUimhir rolla", text))[0])
+    return addr
+
+
+def getRollNumber(text: str):
     roll = re.sub(r'\W+ ', '', isNan(re.findall("Roll number  (.+?)(?= Date)", text))[0])
     if roll == 'NaN': roll = re.sub(r'\W+ ', '', isNan(re.findall("Roll number: (.+?)(?= Date)", text))[0])
     if roll == 'NaN': roll = re.sub(r'\W+ ', '', isNan(re.findall("Roll number: (.+?)\n", text))[0])
@@ -40,7 +57,7 @@ def getLeadershipQuality(text: str):
     return seven
 
 
-def getInfo (path):
+def getInfo(path):
     f = open(path)
     data = f.read()
     line = []
@@ -48,9 +65,9 @@ def getInfo (path):
     data = re.sub("The Inspectorate’s Quality Continuum.+?(?= difficulties)", '', data)
     data = re.sub("THE INSPECTORATE’S QUALITY CONTINUUM.+?(?= difficulties)", '', data)
 
-    line.append(re.sub(r'\W+ ', '', isNan(re.findall("School name .+?(?= School| Seoladh)", data))[0]))
-    line.append(re.sub(r'\W+ ', '', isNan(re.findall("School address .+?(?= Uimhir| Roll)", data))[0]))
-    line.append(getRollNumber(data, path))
+    line.append(getSchoolName(data))
+    line.append(getSchoolAddress(data))
+    line.append(getRollNumber(data))
     line.append(getInspactionDate(data))
     line.append(getPupilsQuality(data))
     line.append(getTeachingQuality(data))
@@ -66,6 +83,6 @@ if __name__ == '__main__':
         res.append(getInfo("../Reports/plain_text/" + f))
     missing = 0
     for r in res:
-        if r[2] == 'NaN':
+        if r[5] == 'NaN':
             missing += 1
     print("Success rate:", 100 - missing / len(res) * 100)
