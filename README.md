@@ -49,11 +49,11 @@ Hugging Face's library (HF) also provided some usefull high-level API for doing 
 Normaly before using our data you would need to tokenize it following this process:
 <img src=".img/tokenization_process.png"/>\
 But this process is pretty heavy, long and verry not friendly to IT neophyte, so HF provide what they call a tokernizer wich do this all process for you:
-<img src=".img/tokenizer_process.png"/>\
+<img src=".img/tokenizer_process.png"/>
 
 Now you just have to call the tokenizer and that it your data is ready to be used ! But it's only half the job...
 
-Now we need to have a ready to use model, therefore a trained model, and training a model is time and money consuming.
+Now we need to have a ready to use model, therefore a trained model, and training a model is time and money consuming.\
 <img src=".img/model_training.png"/>
 
 Is there not a solution ? Ofcourse there is and it's called pre-trained models!
