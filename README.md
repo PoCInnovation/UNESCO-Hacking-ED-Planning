@@ -23,6 +23,13 @@ pip3 install jupyterlab
 pip3 install notebook
 ```
 
+2. Launch frontend
+```bash
+cd gchart
+npm i
+npm start
+```
+
 ## How to test our NLP process ?
 You can access to notebook exemple in `exemples/` folder.\
 To run our exemple just type: `jupyter notebook <path_to_file>`.\
@@ -80,6 +87,8 @@ We choosed to use this pipeline to make it easyer to use for any one with low IT
 Once our Transformers in hand, you just add to process our analysis (Question Answering & Sentence Classification)
 
 ## Data visualisation:
+
+Fetching data is great, but analysing raw data in text format is not very pleasant, this is why we created a map format to vizualise informations
 
 # Our recommendations:
 A great and simple way to improve possible futur datascientiste job on this subject, is to impose a standard format for the reprots.
