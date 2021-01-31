@@ -3,6 +3,13 @@
 ## What is Athena
 **TODO**
 
+## What does Athena can do ?
+Athena can:
+- Fetch primary information froms reports (Teaching quality, Quality of support, Pupils achivements, ...)
+- Score each of the categories between 0 and 1
+- Answer to simples and complexes questions about the rapport such as: "What teaching quality ?"
+- Effectuate a sentiment analysis (labels are: 'good', 'neutral', 'bad')
+- Summarize the rapport with a simple text resuming all the informations
 
 ## How to use it ?
 1. Need to have ```dependencies``` installed
@@ -80,6 +87,19 @@ Ofcourses, we already have many ideas to improve our solution such as:
 - Provision of the model via a REST API to provide acces to it to every country
 - Provision of a discussion group to connect the different actors
 - Set a standard report format
+
+## Some screen shots ?
+**Summary of a rapport**:\
+<img src=".img/single_plot.png" width=500/>
+
+**Summary of a multiple rapports**: (note that there is an histogram for every categories)\
+<img src=".img/histo_data.png"/>
+
+**QnA** (note that is anwser is made by the model and not in raw data)\
+<img src=".img/QnA.png" width=500>
+
+**QnA** (note that is anwser is made by the model and not in raw data)\
+<img src=".img/sentiment_analys.png" width=500>
 
 ## Authors
 
