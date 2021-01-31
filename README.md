@@ -2,8 +2,6 @@
 
 Check our video: https://youtu.be/usJZgW7fCWI
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/usJZgW7fCWI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
 ## What is Athena
 Athena is a all in one solution to parse and analyse informations includes in reports.
 
