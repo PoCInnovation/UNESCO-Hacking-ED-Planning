@@ -7,7 +7,7 @@ import TableRow from '@material-ui/core/TableRow';
 
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import TableCell from "@material-ui/core/TableCell";
-import { regions as rows } from '../../functional/getData'
+import { regions as rows } from '../../functional/mergeJson'
 
 const useStyles = makeStyles({
 	container: {
@@ -21,18 +21,19 @@ const useStyles = makeStyles({
 
 export default function MyTable(props) {
 	const classes = useStyles();
+	const res = rows.map((e) => ({name: e.name, notes: Number(e[props.name])}));
 
 	return (
 			<TableContainer className={classes.container} >
 				<Table stickyHeader>
 					<TableHead>
 						<TableRow>
-							<TableCell>Régions</TableCell>
+							<TableCell>Regions</TableCell>
 							<TableCell align="right">Notes</TableCell>
 						</TableRow>
 					</TableHead>
 					<TableBody>
-						{rows.map((row) => (
+						{res.map((row) => (
 							<TableRow key={row.name}>
 								<TableCell scope={"row"}>
 									{row.name}

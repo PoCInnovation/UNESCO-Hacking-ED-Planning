@@ -28,10 +28,10 @@ export default function DotsMobileStepper() {
 	return (
 		<MobileStepper
 			variant="dots"
-			steps={6}
+			steps={5}
 			position="static"
 			activeStep={activeStep}
-			className={classes.root}
+			className={classes.rootStepper}
 			nextButton={
 				<Button size="small" onClick={handleNext} disabled={activeStep === 5}>
 					Next

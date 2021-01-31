@@ -2,7 +2,7 @@ import Chart from "react-google-charts";
 import React from "react";
 import styled from 'styled-components';
 
-import { formattedValues } from '../../functional/getData';
+import { formattedValues } from '../../functional/mergeJson';
 
 const StyledMapContainer = styled.div`
 	width: 500px;
@@ -12,14 +12,19 @@ const StyledMapContainer = styled.div`
 	box-shadow: 5px 5px 10px #cccccc;
 `
 
+formattedValues.shift();
+
 export default function Map(props) {
+	const res = [['City', props.name]]
+
+	res.push(...formattedValues.map((e) => [e[0], Number(e[props.index])]));
 	return (
 		<StyledMapContainer>
 			<Chart
 				width={'500px'}
 				height={'542px'}
 				chartType="GeoChart"
-				data={formattedValues}
+				data={res}
 				options={{
 					region: 'IE',
 					resolution: 'provinces',
