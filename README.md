@@ -42,13 +42,30 @@ The first step in every project, NLP included is to analyse the probleme to bett
 The second challend is parse and fetch needed information from raw data to build our solution, for this part we worked with text analysys and regex.\
 
 Finally the data in hand we could set and use our Transformer model, we decided to work with [Hugging face's Tranfomers library](https://huggingface.co/transformers/) for it convienient and it low ressources cost.\
-(Regarding to the subject, it's important to build a solution usable by most contry including with low IT ressources countrys.)\
+(Regarding to the subject, it's important to build a solution usable by most contry including with low IT ressources countrys.)
 
-Hugging Face's library also provided some usefull high-level API for doing what we need.
+Hugging Face's library (HF) also provided some usefull high-level API for doing what we need.
 
 Normaly before using our data you would need to tokenize it following this process:
-<img src=".img/tokenization_process.png"/>
+<img src=".img/tokenization_process.png"/>\
+But this process is pretty heavy, long and verry not friendly to IT neophyte, so HF provide what they call a tokernizer wich do this all process for you:
+<img src=".img/tokenizer_process.png"/>\
 
+Now you just have to call the tokenizer and that it your data is ready to be used ! But it's only half the job...
+
+Now we need to have a ready to use model, therefore a trained model, and training a model is time and money consuming.
+<img src=".img/model_training.png"/>
+
+Is there not a solution ? Ofcourse there is and it's called pre-trained models!
+HF also provide [a set of pre-trained models](https://huggingface.co/transformers/pretrained_models.html). You just have import and download it and that it! Much better no?\
+<img src=".img/trained_model.png"/>
+
+Ok, so now we have a tokenizer wich preprocess our data for us and on the other hand our model able of making predictions. It's perfect right ? Is there not bette? Really? Nothig? Ofcourse there is ! And it's called `Pipeline`.
+
+A pipeline does all the time wasting jobs for you, you just avec to call it and that it !
+<img src=".img/pipeline.png"/>
+
+We choosed to use this pipeline to make it easyer to use for any one with low IT knoladge?
 Once our Transformers in hand, you just add to process our analysis (Question Answering & Sentence Classification)
 
 ## Data visualisation:
